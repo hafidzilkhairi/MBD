@@ -1,9 +1,9 @@
 <?php
-if($this->session->flashdata('edituser')=='sukses'){
+if($this->session->flashdata('editbarang')=='sukses'){
 ?>
 <script>alert('Edit Sukses');</script>
 <?php
-}else if($this->session->flashdata('edituser')=='gagal'){
+}else if($this->session->flashdata('editbarang')=='gagal'){
 ?>
 <script>alert('Edit Gagal');</script>
 <?php
@@ -19,11 +19,10 @@ if($this->session->flashdata('edituser')=='sukses'){
 				<thead>
 					<tr>
 						<th>Id</th>
-						<th>Username</th>
-						<th>Password</th>
-						<th>Level</th>
-						<th>Status</th>
-						<th>Email</th>
+						<th>Nama</th>
+						<th>Harga</th>
+						<th>Jumlah</th>
+						<th>Deskripsi</th>
 						<th>Action</th>
 					</tr>
 				</thead>
