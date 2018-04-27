@@ -1,3 +1,6 @@
+</div>
+</div>
+</div>
 <!--footer-->
 <div class="footer">
 	<p>&copy;
@@ -6,7 +9,6 @@
 	</p>
 </div>
 <!--//footer-->
-</div>
 
 <!-- side nav js -->
 <script src='<?php echo $this->config->base_url(); ?>resource/admin/js/SidebarNav.min.js' type='text/javascript'></script>
@@ -48,6 +50,8 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="<?php echo $this->config->base_url(); ?>resource/admin/js/bootstrap.js">
+
+
 </script>
 </body>
 

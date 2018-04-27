@@ -5,7 +5,7 @@ class Admin2 extends CI_Controller{
     }
     function index(){
         if(isset($_SESSION['userAdminId'])){
-            $data['user']= $this->db->query('select * from user')->result_array();;
+            $data['user']= $this->db->query('select * from user')->result_array();
             $this->load->view('admin2/template/header');
             $this->load->view('admin2/v_kelolauser',$data);
             $this->load->view('admin2/template/footer');
@@ -121,5 +121,116 @@ class Admin2 extends CI_Controller{
             redirect($this->config->base_url()."admin2");
         }
     }
+    public function kelolabarang(){
+        if(isset($_SESSION['userAdminId'])){
+            $data['barang'] = $this->db->get('barang')->result_array();
+            $data['error']='';
+            $this->load->view('admin2/template/header');
+            $this->load->view('admin2/v_kelolabarang',$data);
+            $this->load->view('admin2/template/footer');
+        }else{
+            redirect($this->config->base_url()."admin2");
+        }
+    }
+    public function editbarang(){
+        if(isset($_SESSION['userAdminId'])){
+            if(isset($_GET['id'])){
+                $this->db->where('id_barang',(int)$_GET['id']);
+                $query = $this->db->get('barang');
+                if($query->num_rows()>0){
+                    $data['barang'] = $query->result_array()[0];
+                    $this->load->view('admin2/template/header');
+                    $this->load->view('admin2/v_kelolasinglebarang',$data);
+                    $this->load->view('admin2/template/footer');
+                }else{
+                    redirect($this->config->base_url()."admin2/kelolabarang");
+                }
+            }
+        }else{
+            redirect($this->config->base_url()."admin2");
+        }
+    }
+    public function hapusbarang(){
+        if(isset($_SESSION['userAdminId'])){
+            if(isset($_GET['id'])){
+                $this->db->where('id_barang',(int)$_GET['id']);
+                if($this->db->delete('barang')){
+                    $this->session->set_flashdata('hapusbarang','sukses');
+                }else{
+                    $this->session->set_flashdata('hapusbarang','gagal');
+                }
+                redirect($this->config->base_url()."admin2/kelolabarang"); 
+            }
+        }else{
+            redirect($this->config->base_url()."admin2");
+        }
+    }
+    
+    public function tambahbarang(){
+        if(isset($_SESSION['userAdminId'])){
+            if(isset($_POST['namabarang'])){
+                $data['nama_barang'] = $_POST['namabarang'];
+                $data['harga_barang'] = $_POST['harga'];
+                $data['jumlah_barang'] = $_POST['jumlah'];
+                $data['deskripsi_barang'] = $_POST['deskripsi'];
+                if($this->db->insert('barang',$data)){
+                    $this->session->set_flashdata('tambahbarang','sukses');
+                }else{
+                    $this->session->set_flashdata('tambahbarang','gagal');
+                }
+                redirect($this->config->base_url()."admin2/kelolabarang");    
+            }else{
+                $this->load->view('admin2/template/header');
+                $this->load->view('admin2/v_tambahbarang');
+                $this->load->view('admin2/template/footer');
+            }
+        }else{
+            redirect($this->config->base_url()."admin2");
+        }
+    }
+    public function uploadgambarbarang(){
+        if(isset($_SESSION['userAdminId'])){
+            if(isset($_POST['id_barang'])){
+                $config['upload_path']          = 'asset/barang/';
+                $config['allowed_types']        = 'jpg|png|jpeg';
+                $config['max_size']             = 5000000;
+                $file_ext = pathinfo($_FILES["userfile"]["name"], PATHINFO_EXTENSION);
+                $data['id_barang'] =(int) $_POST['id_barang'];
+                $this->db->insert('gambarbarang',$data);
+                $query = $this->db->query('select max(id_gambar) as maks from gambarbarang')->result_array()[0];
+                $config['file_name']=$query['maks'];
+                $dia['slug'] = $query['maks'].'.'.$file_ext;
+                echo "<script>alert('".$dia['slug']."');</script>";
+                $this->db->where('id_gambar',$query['maks']);
+                $this->db->update('gambarbarang',$dia);
+                $this->load->library('upload', $config);
+                if(file_exists('asset/barang/'.$dia['slug'])) unlink('asset/barang/'.$dia['slug']);
+                if ( ! $this->upload->do_upload('userfile'))
+                {
+                    $this->db->query('delete from gambarbarang where id_gambar='.$query['maks']);
+                    $this->session->set_flashdata('uploadgambarbarang','gagal');
+                    $error = array('error' => $this->upload->display_errors());
+                    redirect($this->config->base_url().'admin2/kelolabarang');
+                }
+                else
+                {  
+                    $this->session->set_flashdata('uploadgambarbarang','sukses');
+                    redirect($this->config->base_url().'admin2/kelolabarang');
+                }
+            }else{
+                redirect($this->config->base_url()."admin2/kelolabarang");
+            }
+        }else{
+            redirect($this->config->base_url()."admin2");
+        }
+    }
+    public function kelolagambarbarang(){
+        if(isset($_SESSION['userAdminId'])){
+            
+        }else{
+            redirect($this->config->base_url()."admin2");
+        }
+    }
+    
 }
 ?>
