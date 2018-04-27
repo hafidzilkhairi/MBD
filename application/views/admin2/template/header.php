@@ -97,23 +97,34 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								<li class="treeview">
 									<a href="<?php echo $this->config->base_url(); ?>admin2/kelolabarang">
 										<i class="fa fa-shopping-basket"></i>
-										<span>Kelola Barang</span>
-									</a>
-								</li>
-								<li class="treeview">
-									<a href="#">
-										<i class="fa fa-laptop"></i>
-										<span>Components</span>
+										<span>Barang</span>
 										<i class="fa fa-angle-left pull-right"></i>
 									</a>
 									<ul class="treeview-menu">
 										<li>
-											<a href="grids.html">
-												<i class="fa fa-angle-right"></i> Grids</a>
+											<a href="<?php echo $this->config->base_url(); ?>/admin2/kelolabarang">
+												<i class="fa fa-angle-right"></i> Kelola Barang</a>
 										</li>
 										<li>
-											<a href="media.html">
-												<i class="fa fa-angle-right"></i> Media Css</a>
+											<a href="<?php echo $this->config->base_url(); ?>/admin2/kelolagambarbarang">
+												<i class="fa fa-angle-right"></i> Kelola Gambar Barang</a>
+										</li>
+									</ul>
+								</li>
+								<li class="treeview">
+									<a href="<?php echo $this->config->base_url(); ?>admin2/kelolahunian">
+										<i class="fa fa-home"></i>
+										<span>Hunian</span>
+										<i class="fa fa-angle-left pull-right"></i>
+									</a>
+									<ul class="treeview-menu">
+										<li>
+											<a href="<?php echo $this->config->base_url(); ?>/admin2/kelolahunian">
+												<i class="fa fa-angle-right"></i> Kelola Hunian</a>
+										</li>
+										<li>
+											<a href="<?php echo $this->config->base_url(); ?>/admin2/kelolagambarhunian">
+												<i class="fa fa-angle-right"></i> Kelola Gambar Hunian</a>
 										</li>
 									</ul>
 								</li>
@@ -189,7 +200,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								<li>
 									<a href="#">
 										<div class="user_img">
-											<img src="<?php echo $this->config->base_url(); ?>resource/admin/images/4.jpg" alt="">
+											<img src="<?php //echo $this->config->base_url(); ?>resource/admin/images/4.jpg" alt="">
 										</div>
 										<div class="notification_desc">
 											<p>Lorem ipsum dolor amet</p>
@@ -231,7 +242,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
 
 					<!--search-box-->
-					<div class="search-box">
+					<!-- <div class="search-box">
 						<form class="input">
 							<input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-31" />
 							<label class="input__label" for="input-31">
@@ -240,7 +251,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								</svg>
 							</label>
 						</form>
-					</div>
+					</div> -->
 					<!--//end-search-box-->
 
 					<div class="profile_details">

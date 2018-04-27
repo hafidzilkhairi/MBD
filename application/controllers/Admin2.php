@@ -134,7 +134,19 @@ class Admin2 extends CI_Controller{
     }
     public function editbarang(){
         if(isset($_SESSION['userAdminId'])){
-            if(isset($_GET['id'])){
+            if(isset($_POST['idlama'])){
+                $data['nama_barang']=$_POST['nama'];
+                $data['harga_barang']=$_POST['harga'];
+                $data['jumlah_barang']=$_POST['jumlah'];
+                $this->db->where('id_barang',(int)$_POST['idlama']);
+                $query = $this->db->update('barang',$data);
+                if($query){
+                    $this->session->set_flashdata('editbarang','sukses');
+                }else{
+                    $this->session->set_flashdata('editbarang','gagal');
+                }
+                redirect($this->config->base_url()."admin2/kelolabarang");
+            }else if(isset($_GET['id'])){
                 $this->db->where('id_barang',(int)$_GET['id']);
                 $query = $this->db->get('barang');
                 if($query->num_rows()>0){
@@ -145,6 +157,8 @@ class Admin2 extends CI_Controller{
                 }else{
                     redirect($this->config->base_url()."admin2/kelolabarang");
                 }
+            }else{
+                redirect($this->config->base_url()."admin2/kelolabarang");
             }
         }else{
             redirect($this->config->base_url()."admin2");
@@ -200,7 +214,7 @@ class Admin2 extends CI_Controller{
                 $query = $this->db->query('select max(id_gambar) as maks from gambarbarang')->result_array()[0];
                 $config['file_name']=$query['maks'];
                 $dia['slug'] = $query['maks'].'.'.$file_ext;
-                echo "<script>alert('".$dia['slug']."');</script>";
+                //echo "<script>alert('".$dia['slug']."');</script>";
                 $this->db->where('id_gambar',$query['maks']);
                 $this->db->update('gambarbarang',$dia);
                 $this->load->library('upload', $config);
@@ -226,11 +240,187 @@ class Admin2 extends CI_Controller{
     }
     public function kelolagambarbarang(){
         if(isset($_SESSION['userAdminId'])){
-            
+            $query = $this->db->query('select * from gambarbarang join barang using(id_barang)');
+            if($query->num_rows()>0){
+                $data['gbrbrg'] = $query->result_array()[0];
+            }else{
+                $data['gbrbrg'] = $query->result_array();
+            }
+            $this->load->view('admin2/template/header');
+            $this->load->view('admin2/v_kelolagambarbarang',$data);
+            $this->load->view('admin2/template/footer');
         }else{
             redirect($this->config->base_url()."admin2");
         }
     }
     
+    public function hapusgambarbarang(){
+        if(isset($_SESSION['userAdminId'])){
+            if(isset($_GET['id'])){
+                $this->db->where('id_gambar',(int)$_GET['id']);
+                if($this->db->delete('gambarbarang')){
+                    $this->session->set_flashdata('hapusgambarbarang','sukses');
+                }else{
+                    $this->session->set_flashdata('hapusgambarbarang','gagal');
+                }
+                redirect($this->config->base_url()."admin2/kelolagambarbarang"); 
+            }
+        }else{
+            redirect($this->config->base_url()."admin2");
+        }
+    }
+
+    public function kelolahunian(){
+        if(isset($_SESSION['userAdminId'])){
+            $query = $this->db->query('select * from hunian');
+            if($query->num_rows()>0){
+                $data['hunian'] = $query->result_array();
+            }else{
+                $data['hunian'] = $query->result_array();
+            }
+            $this->load->view('admin2/template/header');
+            $this->load->view('admin2/v_kelolahunian',$data);
+            $this->load->view('admin2/template/footer');
+        }else{
+            redirect($this->config->base_url()."admin2");
+        }
+    }
+    public function tambahhunian(){
+        if(isset($_SESSION['userAdminId'])){
+            if(isset($_POST['nama_hunian'])){
+               $data = $this->input->post(null,TRUE);
+                if($this->db->insert('hunian',$data)){
+                    $this->session->set_flashdata('tambahhunian','sukses');
+                }else{
+                    $this->session->set_flashdata('tambahhunian','gagal');
+                }
+                redirect($this->config->base_url()."admin2/kelolahunian");    
+            }else{
+                $this->load->view('admin2/template/header');
+                $this->load->view('admin2/v_tambahhunian');
+                $this->load->view('admin2/template/footer');
+            }
+        }else{
+            redirect($this->config->base_url()."admin2");
+        }
+    }
+
+    public function edithunian(){
+        if(isset($_SESSION['userAdminId'])){
+            if(isset($_POST['idlama'])){
+                $data['nama_hunian']=$_POST['nama'];
+                $data['harga_hunian']=$_POST['harga'];
+                $data['status_hunian']=$_POST['status_hunian'];
+                $data['deskripsi']= $_POST['comment'];
+                echo $_POST['comment'];
+                $this->db->where('id_hunian',(int)$_POST['idlama']);
+                $query = $this->db->update('hunian',$data);
+                if($query){
+                    $this->session->set_flashdata('edithunian','sukses');
+                }else{
+                    $this->session->set_flashdata('edithunian','gagal');
+                }
+                redirect($this->config->base_url()."admin2/kelolahunian");
+            }else if(isset($_GET['id'])){
+                $this->db->where('id_hunian',(int)$_GET['id']);
+                $query = $this->db->get('hunian');
+                if($query->num_rows()>0){
+                    $data['hunian'] = $query->result_array()[0];
+                    $this->load->view('admin2/template/header');
+                    $this->load->view('admin2/v_kelolasinglehunian',$data);
+                    $this->load->view('admin2/template/footer');
+                }else{
+                    redirect($this->config->base_url()."admin2/kelolahunian");
+                }
+            }else{
+                redirect($this->config->base_url()."admin2/kelolahunian");
+            }
+        }else{
+            redirect($this->config->base_url()."admin2");
+        }
+    }
+    
+    public function hapushunian(){
+        if(isset($_SESSION['userAdminId'])){
+            if(isset($_GET['id'])){
+                $this->db->where('id_hunian',(int)$_GET['id']);
+                if($this->db->delete('hunian')){
+                    $this->session->set_flashdata('hapushunian','sukses');
+                }else{
+                    $this->session->set_flashdata('hapushunian','gagal');
+                }
+                redirect($this->config->base_url()."admin2/kelolahunian"); 
+            }
+        }else{
+            redirect($this->config->base_url()."admin2");
+        }
+    }
+    public function uploadgambarhunian(){
+        if(isset($_SESSION['userAdminId'])){
+            if(isset($_POST['id_hunian'])){
+                $config['upload_path']          = 'asset/hunian/';
+                $config['allowed_types']        = 'jpg|png|jpeg';
+                $config['max_size']             = 5000000;
+                $file_ext = pathinfo($_FILES["userfile"]["name"], PATHINFO_EXTENSION);
+                $data['id_hunian'] =(int) $_POST['id_hunian'];
+                $this->db->insert('gambarhunian',$data);
+                $query = $this->db->query('select max(id_gambarhunian) as maks from gambarhunian')->result_array()[0];
+                $config['file_name']=$query['maks'];
+                $dia['slug'] = $query['maks'].'.'.$file_ext;
+
+                //echo "<script>alert('".$dia['slug']."');</script>";
+                $this->db->where('id_gambarhunian',$query['maks']);
+                $this->db->update('gambarhunian',$dia);
+                $this->load->library('upload', $config);
+                if(file_exists('asset/hunian/'.$dia['slug'])) unlink('asset/hunian/'.$dia['slug']);
+                if ( ! $this->upload->do_upload('userfile'))
+                {
+                    $this->db->query('delete from gambarhunian where id_gambarhunian='.$query['maks']);
+                    $this->session->set_flashdata('uploadgambarhunian','gagal');
+                    $error = array('error' => $this->upload->display_errors());
+                    redirect($this->config->base_url().'admin2/kelolahunian');
+                }
+                else
+                {  
+                    $this->session->set_flashdata('uploadgambarhunian','sukses');
+                    redirect($this->config->base_url().'admin2/kelolahunian');
+                }
+            }else{
+                redirect($this->config->base_url()."admin2/kelolahunian");
+            }
+        }else{
+            redirect($this->config->base_url()."admin2");
+        }
+    }
+    public function kelolagambarhunian(){
+        if(isset($_SESSION['userAdminId'])){
+            $query = $this->db->query('select * from gambarhunian join hunian using(id_hunian)');
+            if($query->num_rows()>0){
+                $data['gbrbrg'] = $query->result_array();
+            }else{
+                $data['gbrbrg'] = $query->result_array();
+            }
+            $this->load->view('admin2/template/header');
+            $this->load->view('admin2/v_kelolagambarhunian',$data);
+            $this->load->view('admin2/template/footer');
+        }else{
+            redirect($this->config->base_url()."admin2");
+        }
+    }
+    public function hapusgambarhunian(){
+        if(isset($_SESSION['userAdminId'])){
+            if(isset($_GET['id'])){
+                $this->db->where('id_gambarhunian',(int)$_GET['id']);
+                if($this->db->delete('gambarhunian')){
+                    $this->session->set_flashdata('hapusgambarhunian','sukses');
+                }else{
+                    $this->session->set_flashdata('hapusgambarhunian','gagal');
+                }
+                redirect($this->config->base_url()."admin2/kelolagambarhunian"); 
+            }
+        }else{
+            redirect($this->config->base_url()."admin2");
+        }
+    }
 }
 ?>

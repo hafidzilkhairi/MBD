@@ -10,7 +10,7 @@
 	<div class="account">
 		<div class="account-pass">
 			<div class="col-md-12 account-top">
-				<form action="#" method="post">
+				<form action="<?php echo $this->config->base_url(); ?>/login/action" method="post">
 					<div>
 						<span>Email</span>
 						<input type="text">
@@ -20,7 +20,7 @@
 						<input type="password">
 					</div>
 					<button type="submit" class="btn btn-success btn-lg btn-block">Login</button>
-					<button type="button" class="btn btn-primary btn-lg btn-block">Sign Up</button>
+					<a href="<?php echo $this->config->base_url(); ?>/signup"><button type="button" class="btn btn-primary btn-lg btn-block">Sign Up</button></a>
 				</form>
 			</div>
 			<div class="clearfix"> </div>

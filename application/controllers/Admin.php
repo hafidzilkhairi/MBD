@@ -2,6 +2,7 @@
 class Admin extends CI_Controller{
     function __construct(){
         parent::__construct();
+        redirect($this->config->base_url().'admin2/');
     }
     function index(){
         if(isset($_SESSION['userAdminId'])){
