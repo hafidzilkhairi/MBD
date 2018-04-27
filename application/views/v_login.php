@@ -11,7 +11,6 @@
 		<div class="account-pass">
 			<div class="col-md-12 account-top">
 				<form action="#" method="post">
-
 					<div>
 						<span>Email</span>
 						<input type="text">

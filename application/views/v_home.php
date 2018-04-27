@@ -18,9 +18,8 @@
 					<li>
 
 						<div class="banner-text">
-							<h3>Lorem Ipsum is </h3>
-							<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature
-								from 45 BC.</p>
+							<h3>Susah cari kontrakkan? sudah disini Saja</h3>
+							<p>cepatnya transaksi dengan pemilik, dan mudahnya dalam berkomunikasi adalah hal yang ditawarkan</p>
 
 						</div>
 
@@ -28,9 +27,8 @@
 					<li>
 
 						<div class="banner-text">
-							<h3>There are many </h3>
-							<p>Popular belief Contrary to , Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature
-								from 45 BC.</p>
+							<h3>Cari Rumah?</h3>
+							<p>Kuriak juga menyediakan penawaran rumah dengan harga yang cocok dengan anda</p>
 
 
 						</div>
@@ -38,13 +36,9 @@
 					</li>
 					<li>
 						<div class="banner-text">
-							<h3>Sed ut perspiciatis</h3>
-							<p>Lorem Ipsum is not simply random text. Contrary to popular belief, It has roots in a piece of classical Latin literature
-								from 45 BC.</p>
-
-
+							<h3>Pingin bangun rumah?</h3>
+							<p>Rumah yang anda bangun perlu bahan?, disini juga tersedia....</p>
 						</div>
-
 					</li>
 				</ul>
 			</div>
