@@ -1,152 +1,84 @@
-<!--A Design by W3layouts 
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-	<title>Kuriak e-commerce | Home</title>
-	<link href="<?php echo $this->config->base_url(); ?>resource/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"
-	/>
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="<?php echo $this->config->base_url(); ?>resource/js/jquery.min.js"></script>
-	<!-- Custom Theme files -->
-	<!--theme-style-->
-	<link href="<?php echo $this->config->base_url(); ?>resource/css/style.css" rel="stylesheet" type="text/css" media="all"
-	/>
-	<!--//theme-style-->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Mattress Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-	<script type="application/x-javascript">
-		addEventListener("load", function () {
-			setTimeout(hideURLbar, 0);
-		}, false);
 
-		function hideURLbar() {
-			window.scrollTo(0, 1);
-		}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-	</script>
-	<!--fonts-->
-	<link href='//fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
-	<link href='//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
-	<!--//fonts-->
-	<!-- start menu -->
-	<link href="<?php echo $this->config->base_url(); ?>resource/css/memenu.css" rel="stylesheet" type="text/css" media="all"
-	/>
-	<script type="text/javascript" src="<?php echo $this->config->base_url(); ?>resource/js/memenu.js"></script>
-	<script>
-		$(document).ready(function () {
-			$(".memenu").memenu();
-		});
+  <title>Kuriak Plan | Bangunan, Perumahan, dan juga Bahan Bangunan</title>
 
-	</script>
-	<script src="<?php echo $this->config->base_url(); ?>resource/js/simpleCart.min.js"></script>
+  <!-- Bootstrap core CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+  <!-- Custom styles for this template -->
+  <link href="<?php echo $this->config->base_url(); ?>css/shop-homepage.css" rel="stylesheet">
+
 </head>
 
 <body>
-	<!--header-->
-	<div class="header">
-		<div class="header-top">
-			<div class="container">
-				<div class="social">
-					<ul>
-						<li>
-							<a href="#">
-								<i class="facebok"> </i>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<i class="twiter"> </i>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<i class="inst"> </i>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<i class="goog"> </i>
-							</a>
-						</li>
-						<div class="clearfix"></div>
-					</ul>
-				</div>
-				<div class="header-left">
 
-					<div class="search-box">
-						<div id="sb-search" class="sb-search">
-							<form action="#" method="post">
-								<input class="sb-search-input" placeholder="Enter your search term..." type="search" id="search">
-								<input class="sb-search-submit" type="submit" value="">
-								<span class="sb-icon-search"> </span>
-							</form>
-						</div>
-					</div>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Kuriak Plan</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="<?php echo $this->config->base_url(); ?>">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo $this->config->base_url(); ?>aboutus">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo $this->config->base_url(); ?>contactus">Contact</a>
+          </li>
+          <?php 
+            if(isset($_SESSION['userId'])){
+              ?>
+              <li>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <?php $this->db->where('id_user',$_SESSION['userId']); echo $this->db->get('user','username_user')->result_array()[0]['username_user'];?>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Keranjang<sup><?php $this->db->where('id_user',$_SESSION['userId']); echo $this->db->get('keranjang','count(*)')->num_rows(); ?></sup></a>
+                  <a class="dropdown-item" href="#">Pesanan Hunian<sup><?php $this->db->where('id_user',$_SESSION['userId']); echo $this->db->get('pesananhunian','count(*)')->num_rows(); ?></sup></a>
+                  <a class="dropdown-item" href="<?php echo $this->config->base_url(); ?>logout">Logout</a>
+                </div>
+              </div>
+              </li>
+              <?php
+            }
+          ?>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-					<!-- search-scripts -->
-					<script src="<?php echo $this->config->base_url(); ?>resource/js/classie.js"></script>
-					<script src="<?php echo $this->config->base_url(); ?>resource/js/uisearch.js"></script>
-					<script>
-						new UISearch(document.getElementById('sb-search'));
+  <!-- Page Content -->
+  <div class="container">
 
-					</script>
-					<!-- //search-scripts -->
+    <div class="row">
 
-					<div class="ca-r">
-						<div class="cart box_1">
-							<a href="checkout.html">
-								<h3>
-									<div class="total">
-										<span class="simpleCart_total"></span>
-									</div>
-									<img src="<?php echo $this->config->base_url(); ?>resource/images/cart.png" alt="" />
-								</h3>
-							</a>
-							<p>
-								<a href="javascript:;" class="simpleCart_empty">Empty Cart</a>
-							</p>
+      <div class="col-lg-3">
 
-						</div>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
+        <h1 class="my-4">Kuriak</h1>
+        <div class="list-group">
+          <a href="<?php echo $this->config->base_url();?>home" class="list-group-item">Rumah</a>
+          <a href="<?php echo $this->config->base_url();?>bahanbangunan" class="list-group-item">Bahan Bangunan</a>
+          <a href="<?php echo $this->config->base_url();?>kontrakkan" class="list-group-item">Kontrakkan</a>
+        </div>
 
-			</div>
-		</div>
-		<div class="container">
-			<div class="head-top">
-				<div class="logo">
-					<h1>
-						<a href="<?php echo $this->config->base_url(); ?>">Kuriak</a>
-					</h1>
-				</div>
-				<div class=" h_menu4">
-					<ul class="memenu skyblue">
-						<li>
-							<a class="color8" href="<?php echo $this->config->base_url(); ?>">KONTRAKKAN</a>
-						</li>
-						<li>
-							<a class="color1" href="#">RUMAH</a>
-						</li>
-						<li>
-							<a class="color1" href="#">BAHAN BANGUNAN</a>
-						</li>
-						<li>
-							<a class="color6" href="contact.html">CONTACT</a>
-						</li>
-						<li><a class="color4" href="login.html">Login</a></li>
-					</ul>
-				</div>
+      </div>
+      <!-- /.col-lg-3 -->
 
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
+      <div class="col-lg-9">

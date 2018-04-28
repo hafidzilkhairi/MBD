@@ -1,58 +1,28 @@
-<div class="footer w3layouts">
-				<div class="container">
-			<div class="footer-top-at w3">
-			
-				<div class="col-md-3 amet-sed w3l">
-				<h4>MORE INFO</h4>
-				<ul class="nav-bottom">
-						<li><a href="#">How to order</a></li>
-						<li><a href="#">FAQ</a></li>
-						<li><a href="contact.html">Location</a></li>
-						<li><a href="#">Shipping</a></li>
-						<li><a href="#">Membership</a></li>	
-					</ul>	
-				</div>
-				<div class="col-md-3 amet-sed w3ls">
-					<h4>CATEGORIES</h4>
-					<ul class="nav-bottom">
-						<li><a href="#">Bed linen</a></li>
-						<li><a href="#">Cushions</a></li>
-						<li><a href="#">Duvets</a></li>
-						<li><a href="#">Pillows</a></li>
-						<li><a href="#">Protectors</a></li>	
-					</ul>
-					
-				</div>
-				<div class="col-md-3 amet-sed agileits">
-					<h4>NEWSLETTER</h4>
-					<div class="stay agileinfo">
-						<div class="stay-left wthree">
-							<form action="#" method="post">
-								<input type="text" placeholder="Enter your email " required="">
-							</form>
-						</div>
-						<div class="btn-1 w3-agileits">
-							<form action="#" method="post">
-								<input type="submit" value="Subscribe">
-							</form>
-						</div>
-							<div class="clearfix"> </div>
-			</div>
-					
-				</div>
-				<div class="col-md-3 amet-sed agileits-w3layouts">
-				<h4>CONTACT US</h4>
-					<p>Contrary to popular belief</p>
-					<p>The standard chunk</p>
-					<p>office :  +12 34 995 0792</p>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-		<div class="footer-class w3-agile">
-		<p>&copy;<?php echo date('Y'); ?> Kuriaks . All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
-		</div>
-		</div>
+</div>
+<!-- /.col-lg-9 -->
+
+</div>
+<!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+	<div class="container">
+		<p class="m-0 text-center text-white">Copyright &copy; Kuriak <?php echo date('Y'); ?></p>
+	</div>
+	<!-- /.container -->
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js" integrity="sha384-lZmvU/TzxoIQIOD9yQDEpvxp6wEU32Fy0ckUgOH4EIlMOCdR823rg4+3gWRwnX1M"
+crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+crossorigin="anonymous"></script>
+
 </body>
+
 </html>
-			

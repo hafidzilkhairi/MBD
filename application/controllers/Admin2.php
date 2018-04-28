@@ -242,7 +242,7 @@ class Admin2 extends CI_Controller{
         if(isset($_SESSION['userAdminId'])){
             $query = $this->db->query('select * from gambarbarang join barang using(id_barang)');
             if($query->num_rows()>0){
-                $data['gbrbrg'] = $query->result_array()[0];
+                $data['gbrbrg'] = $query->result_array();
             }else{
                 $data['gbrbrg'] = $query->result_array();
             }

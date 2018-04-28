@@ -79,7 +79,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								<span class="icon-bar"></span>
 							</button>
 							<h1>
-								<a class="navbar-brand" href="index.html">
+								<a class="navbar-brand" href="<?php echo $this->config->base_url();?>admin">
 									<span class="fa fa-area-chart"></span> Kuriak
 									<span class="dashboard_text">Admin dashboard</span>
 								</a>
