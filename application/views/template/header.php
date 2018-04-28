@@ -9,7 +9,8 @@
   <meta name="author" content="">
 
   <title>Kuriak Plan | Bangunan, Perumahan, dan juga Bahan Bangunan</title>
-
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
   <!-- Bootstrap core CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
@@ -50,8 +51,8 @@
                   <?php $this->db->where('id_user',$_SESSION['userId']); echo $this->db->get('user','username_user')->result_array()[0]['username_user'];?>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Keranjang<sup><?php $this->db->where('id_user',$_SESSION['userId']); echo $this->db->get('keranjang','count(*)')->num_rows(); ?></sup></a>
-                  <a class="dropdown-item" href="#">Pesanan Hunian<sup><?php $this->db->where('id_user',$_SESSION['userId']); echo $this->db->get('pesananhunian','count(*)')->num_rows(); ?></sup></a>
+                  <a class="dropdown-item" href="<?php echo $this->config->base_url();?>previewpesanan">Pesanan Hunian<sup><?php $this->db->where('id_user',$_SESSION['userId']); echo $this->db->get('pesananhunian','count(*)')->num_rows(); ?></sup></a>
+                  <a class="dropdown-item" href="<?php echo $this->config->base_url();?>previewpesanan">Keranjang<sup><?php $this->db->where('id_user',$_SESSION['userId']); echo $this->db->get('keranjang','count(*)')->num_rows(); ?></sup></a>
                   <a class="dropdown-item" href="<?php echo $this->config->base_url(); ?>logout">Logout</a>
                 </div>
               </div>

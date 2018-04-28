@@ -10,13 +10,7 @@
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2>About this page</h2>
-            <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p>
-            <ul>
-              <li>Clickable nav links that smooth scroll to page sections</li>
-              <li>Responsive behavior when clicking nav links perfect for a one page website</li>
-              <li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar</li>
-              <li>Minimal custom CSS so you are free to explore your own unique design options</li>
-            </ul>
+            <p class="lead">Site ini merupakan site resmi kuriak, perusahaan pengiklanan hunian dan penjualan bahan bangunan yang beroperasi di kota Bandung sejak tahun 2018. Site ini dibuat dan dikelola oleh tim programmer kuriak plan.</p>
           </div>
         </div>
       </div>
@@ -27,7 +21,8 @@
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2>Services we offer</h2>
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
+            <p class="lead">Kami menawarkan jasa pemasangan iklan  hunian berbasis web yang mencakup kost-kostan,kontrakkan atau bahkan penjualan hunian. Jasa pengiklanan kami telah dimulai sejak tahun 2018 dengan catatan record yang baik karena kami menerapkan sistim kerja sama yang transparan dengan mitra-mitra kami yang telah memasangkan iklan hunian mereka di website kami.
+Apabila anda hendak mencari barang-barang terkait bahan bangunan kami juga menyediakan produk yang dapat kami antar se kota Bandung raya dengan kualitas yang terjamin prima dengan harga yang bersaing.</p>
           </div>
         </div>
       </div>
@@ -37,8 +32,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2>Contact us</h2>
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
+            <h2 href="<?php $this->config->base_url();?>contactus">Contact us</h2>
           </div>
         </div>
       </div>
